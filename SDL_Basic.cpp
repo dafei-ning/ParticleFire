@@ -46,7 +46,18 @@ int main() {
 
     Uint32 *buffer = new Uint32[SCREEN_WIDTH * SCREEN_HEIGHT];
 
-    memset(buffer, 200, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32) * 0.5);
+    memset(buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+
+
+    // Change each pixel.
+    // White:  0xFFFFFFFF
+    // Red:    0xFF0000FF
+    // Green:  0x00FF00FF
+    // Blue:   0x0000FFFF
+    // Purple: 0xFF00FFFF
+    for (int i = 0; i < SCREEN_HEIGHT * SCREEN_WIDTH; i++) {
+        buffer[i] = 0xFF00FFFF;
+    }
 
     // Update the screen.
     SDL_UpdateTexture(texture, NULL, buffer, SCREEN_WIDTH* sizeof(Uint32));

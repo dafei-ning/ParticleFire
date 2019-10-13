@@ -44,6 +44,17 @@ int main() {
         return 4;
     }
 
+    Uint32 *buffer = new Uint32[SCREEN_WIDTH * SCREEN_HEIGHT];
+
+    memset(buffer, 200, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32) * 0.5);
+
+    // Update the screen.
+    SDL_UpdateTexture(texture, NULL, buffer, SCREEN_WIDTH* sizeof(Uint32));
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
+    SDL_RenderPresent(renderer);
+
+
     // Running.
 
     bool event_running = true;
@@ -59,8 +70,9 @@ int main() {
             }
         }
     }
-    
+
     // Clean up before finish.
+    delete [] buffer;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyTexture(texture);
     SDL_DestroyWindow(window);

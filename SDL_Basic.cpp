@@ -29,6 +29,23 @@ int main() {
     SDL_Texture *texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STATIC,
                                              SCREEN_WIDTH, SCREEN_HEIGHT);
 
+    if (renderer == NULL) {
+        cout << "The renderer failed to be created" << endl;
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return 3;
+    }
+
+    if (texture == NULL) {
+        cout << "The texture failed to be created" << endl;
+        SDL_DestroyWindow(window);
+        SDL_DestroyRenderer(renderer);
+        SDL_Quit();
+        return 4;
+    }
+
+    // Running.
+
     bool event_running = true;
 
     SDL_Event event;
@@ -42,7 +59,10 @@ int main() {
             }
         }
     }
-
+    
+    // Clean up before finish.
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyTexture(texture);
     SDL_DestroyWindow(window);
     SDL_Quit();
 }

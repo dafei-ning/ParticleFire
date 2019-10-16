@@ -2,7 +2,9 @@
 #ifndef SDL_BASIC_SCREEN_H
 #define SDL_BASIC_SCREEN_H
 
+#include <iostream>
 #include <SDL.h>
+
 
 namespace ParticleFire {
     class Screen {
@@ -23,6 +25,7 @@ namespace ParticleFire {
         void finish();
     };
 }
+
 
 
 

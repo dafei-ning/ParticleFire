@@ -23,5 +23,4 @@ int main() {
 
     screen.finish();
 
-
 }

@@ -29,6 +29,4 @@ namespace ParticleFire {
 }
 
 
-
-
 #endif //SDL_BASIC_SCREEN_H

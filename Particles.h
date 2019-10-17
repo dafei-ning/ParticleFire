@@ -5,7 +5,7 @@
 #include <iostream>
 
 namespace ParticleFire {
-    class Particles {
+    struct Particles {
     private:
         double m_x;
         double m_y;

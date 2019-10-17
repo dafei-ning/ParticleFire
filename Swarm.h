@@ -7,7 +7,7 @@
 namespace ParticleFire {
     class Swarm {
     public:
-        const static int PARTICLES_NUMBER = 5000;
+        const static int PARTICLES_NUMBER = 16000;
     private:
         Particles *m_pParticles;
     public:

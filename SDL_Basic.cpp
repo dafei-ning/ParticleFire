@@ -36,7 +36,9 @@ int main() {
         double blue_change = (1 + sin(time_elapsed * 0.009)) * 128;
 
         const Particles * pParticles = swarm.getParticles();
+
         for (int i = 0; i < Swarm::PARTICLES_NUMBER; i++) {
+            // particle也就是产生的随机数而已
             Particles particle = pParticles[i];
 
             int x = (particle.m_x + 1) * Screen::SCREEN_WIDTH / 1.6;

@@ -27,6 +27,8 @@ int main() {
     // create particle, update, check.
     while(true) {
 
+        swarm.update();
+
         // counting the seconds it takes to drive the change through sin().
         // The sin(time_elapsed) ranges from -1 to 1.
         int time_elapsed = SDL_GetTicks();

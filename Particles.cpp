@@ -13,4 +13,11 @@ namespace ParticleFire {
     Particles::~Particles() {
 
     }
+
+    void Particles::update() {
+        const double speed = 0.005;
+
+        m_x += speed;
+        m_y += speed;
+    }
 }

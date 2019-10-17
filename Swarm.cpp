@@ -11,4 +11,10 @@ namespace ParticleFire {
         delete [] m_pParticles;
 
     }
+
+    void Swarm::update() {
+        for (int i = 0; i < Swarm::PARTICLES_NUMBER; i++) {
+            m_pParticles[i].update();
+        }
+    }
 }

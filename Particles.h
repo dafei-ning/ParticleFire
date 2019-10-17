@@ -1,24 +1,26 @@
 
-#ifndef SDL_BASIC_PARTICLES_H
-#define SDL_BASIC_PARTICLES_H
+#ifndef SDL_BASIC_SWARM_H
+#define SDL_BASIC_SWARM_H
 
-#include <iostream>
+#include "Particles.h"
 
 namespace ParticleFire {
-    struct Particles {
-    private:
-        double m_x;
-        double m_y;
-
-
+    class Swarm {
     public:
-        Particles();
-        ~Particles();
+        const static int PARTICLES_NUMBER = 16000;
+    private:
+        Particles *m_pParticles;
+    public:
+        Swarm();
+        virtual ~Swarm();
+
+        const Particles * const getParticles() { return m_pParticles; };
+        void update();
+
 
     };
 }
 
 
 
-
-#endif //SDL_BASIC_PARTICLES_H
+#endif //SDL_BASIC_SWARM_H

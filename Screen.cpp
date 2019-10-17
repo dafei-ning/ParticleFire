@@ -61,6 +61,7 @@ namespace ParticleFire {
         color += blue;  // ff123456 blue
         color <<= 8;
         color += 0xFF;
+        // For every pixel, the buffer will change by given color.
         m_buffer[(y * SCREEN_WIDTH) + x] = color;
     }
 

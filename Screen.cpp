@@ -43,15 +43,29 @@ namespace ParticleFire {
         // Blue:   0x0000FFFF
         // Purple: 0xFF00FFFF
         for (int i = 0; i < SCREEN_HEIGHT * SCREEN_WIDTH; i++) {
-            m_buffer[i] = 0xFFFF00FF;
+            m_buffer[i] = 0x00000000;
         }
+        return true;
+    }
+
+    void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue) {
+        Uint32 color = 0;
+        color += red;   // 0000ff12 Red
+        color <<= 8;
+        color += green; // 00ff1234 green
+        color <<= 8;
+        color += blue;  // ff123456 blue
+        color <<= 8;
+        color += 0xFF;
+        m_buffer[(y * SCREEN_WIDTH) + x] = color;
+    }
+
+    void Screen::update() {
         // Update the screen.
-        SDL_UpdateTexture(m_texture, NULL, m_buffer, SCREEN_WIDTH* sizeof(Uint32));
+        SDL_UpdateTexture(m_texture, NULL, m_buffer, SCREEN_WIDTH * sizeof(Uint32));
         SDL_RenderClear(m_renderer);
         SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
         SDL_RenderPresent(m_renderer);
-
-        return true;
     }
 
     bool Screen::processEvent() {

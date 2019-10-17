@@ -22,10 +22,12 @@ int main() {
         // The sin(time_elapsed) ranges from -1 to 1.
         int time_elapsed = SDL_GetTicks();
         // The color index ranges from 0 to 255, make the color reside in this range.
-        double color_change = (1 + sin(time_elapsed * 0.001)) * 128;
+        double red_change = (1 + sin(time_elapsed * 0.001)) * 128;
+        double green_change = (1 + sin(time_elapsed * 0.003)) * 128;
+        double blue_change = (1 + sin(time_elapsed * 0.009)) * 128;
         for (int j = 0; j < Screen::SCREEN_HEIGHT; j++) {
             for (int i = 0; i < Screen::SCREEN_WIDTH; i++) {
-                screen.setPixel(i, j, color_change, 0, 0);
+                screen.setPixel(i, j, red_change, green_change, blue_change);
             }
         }
         screen.update();

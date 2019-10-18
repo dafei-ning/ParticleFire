@@ -50,6 +50,8 @@ int main() {
         }
 
         screen.update();
+        swarm.update();
+        screen.clear();
         if(screen.processEvent() == false) {
             break;
         }

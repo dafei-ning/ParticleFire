@@ -15,6 +15,7 @@ namespace ParticleFire {
         virtual ~Swarm();
 
         const Particles * const getParticles() { return m_pParticles; };
+        void update();
 
 
     };

@@ -41,7 +41,7 @@ int main() {
             // particle也就是产生的随机数而已
             Particles particle = pParticles[i];
             int x = (particle.m_x + 1) * Screen::SCREEN_WIDTH / 2;
-            int y = (particle.m_y + 1) * Screen::SCREEN_HEIGHT / 2;
+            int y = (particle.m_y) * Screen::SCREEN_WIDTH / 2 + Screen::SCREEN_HEIGHT / 2;
             screen.setPixel(x, y, red_change, green_change, blue_change);
         }
 

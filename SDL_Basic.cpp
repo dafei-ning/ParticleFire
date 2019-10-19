@@ -34,18 +34,14 @@ int main() {
         int time_elapsed = SDL_GetTicks();
         // The color index ranges from 0 to 255, make the color reside in this range.
         double red_change = (1 + sin(time_elapsed * 0.001)) * 128;
-        double green_change = (1 + sin(time_elapsed * 0.003)) * 128;
-        double blue_change = (1 + sin(time_elapsed * 0.009)) * 128;
-
+        double green_change = (1 + sin(time_elapsed * 0.002)) * 128;
+        double blue_change = (1 + sin(time_elapsed * 0.004)) * 128;
         const Particles * pParticles = swarm.getParticles();
-
         for (int i = 0; i < Swarm::PARTICLES_NUMBER; i++) {
             // particle也就是产生的随机数而已
             Particles particle = pParticles[i];
-
-            int x = (particle.m_x + 1) * Screen::SCREEN_WIDTH / 1.6;
-            int y = (particle.m_y + 1) * Screen::SCREEN_HEIGHT / 1.6;
-
+            int x = (particle.m_x + 1) * Screen::SCREEN_WIDTH / 2;
+            int y = (particle.m_y + 1) * Screen::SCREEN_HEIGHT / 2;
             screen.setPixel(x, y, red_change, green_change, blue_change);
         }
 

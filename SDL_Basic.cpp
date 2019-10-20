@@ -27,11 +27,12 @@ int main() {
     // create particle, update, check.
     while(true) {
 
-        swarm.update();
-
         // counting the seconds it takes to drive the change through sin().
         // The sin(time_elapsed) ranges from -1 to 1.
         int time_elapsed = SDL_GetTicks();
+
+        swarm.update(time_elapsed);
+
         // The color index ranges from 0 to 255, make the color reside in this range.
         double red_change = (1 + sin(time_elapsed * 0.001)) * 128;
         double green_change = (1 + sin(time_elapsed * 0.002)) * 128;
@@ -46,7 +47,6 @@ int main() {
         }
 
         screen.update();
-        swarm.update();
         screen.clear();
         if(screen.processEvent() == false) {
             break;

@@ -2,7 +2,7 @@
 #include "Swarm.h"
 
 namespace ParticleFire {
-    Swarm::Swarm() {
+    Swarm::Swarm(): lastTime(0) {
         m_pParticles = new Particles[PARTICLES_NUMBER];
 
     }
@@ -12,9 +12,11 @@ namespace ParticleFire {
 
     }
 
-    void Swarm::update() {
+    void Swarm::update(int time) {
+        int interval = time - lastTime;
         for (int i = 0; i < Swarm::PARTICLES_NUMBER; i++) {
-            m_pParticles[i].update();
+            m_pParticles[i].update(interval);
         }
+        lastTime = time;
     }
 }

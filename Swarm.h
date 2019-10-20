@@ -10,12 +10,13 @@ namespace ParticleFire {
         const static int PARTICLES_NUMBER = 16000;
     private:
         Particles *m_pParticles;
+        int lastTime;
     public:
         Swarm();
         virtual ~Swarm();
 
         const Particles * const getParticles() { return m_pParticles; };
-        void update();
+        void update(int time);
 
 
     };

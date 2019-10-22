@@ -2,7 +2,7 @@
 #include "Screen.h"
 
 namespace ParticleFire {
-    Screen::Screen(): m_window(NULL), m_renderer(NULL), m_texture(NULL), m_buffer(NULL) {
+    Screen::Screen(): m_window(NULL), m_renderer(NULL), m_texture(NULL), m_buffer1(NULL), m_buffer2(NULL) {
 
     }
 
@@ -34,22 +34,22 @@ namespace ParticleFire {
             SDL_Quit();
             return false;
         }
-        m_buffer = new Uint32[SCREEN_WIDTH * SCREEN_HEIGHT];
-        memset(m_buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+        m_buffer1 = new Uint32[SCREEN_WIDTH * SCREEN_HEIGHT];
+        m_buffer2 = new Uint32[SCREEN_WIDTH * SCREEN_HEIGHT];
+        memset(m_buffer1, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+        memset(m_buffer2, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
         // Change each pixel.
         // White:  0xFFFFFFFF
         // Red:    0xFF0000FF
         // Green:  0x00FF00FF
         // Blue:   0x0000FFFF
         // Purple: 0xFF00FFFF
-        for (int i = 0; i < SCREEN_HEIGHT * SCREEN_WIDTH; i++) {
-            m_buffer[i] = 0x00000000;
-        }
         return true;
     }
 
     void Screen::clear() {
-        memset(m_buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+        memset(m_buffer1, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+        memset(m_buffer2, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
     }
 
     void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue) {
@@ -66,12 +66,12 @@ namespace ParticleFire {
         color <<= 8;
         color += 0xFF;
         // For every pixel, the buffer will change by given color.
-        m_buffer[(y * SCREEN_WIDTH) + x] = color;
+        m_buffer1[(y * SCREEN_WIDTH) + x] = color;
     }
 
     void Screen::update() {
         // Update the screen.
-        SDL_UpdateTexture(m_texture, NULL, m_buffer, SCREEN_WIDTH * sizeof(Uint32));
+        SDL_UpdateTexture(m_texture, NULL, m_buffer1, SCREEN_WIDTH * sizeof(Uint32));
         SDL_RenderClear(m_renderer);
         SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
         SDL_RenderPresent(m_renderer);
@@ -88,13 +88,17 @@ namespace ParticleFire {
         return true;
     }
 
+    void Screen::boxBlur() {
+
+    }
+
     void Screen::finish() {
         // Clean up before finish.
-        delete [] m_buffer;
+        delete [] m_buffer1;
+        delete [] m_buffer2;
         SDL_DestroyRenderer(m_renderer);
         SDL_DestroyTexture(m_texture);
         SDL_DestroyWindow(m_window);
         SDL_Quit();
-
     }
 }

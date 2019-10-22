@@ -1,6 +1,6 @@
 # ParticleFire
 
-A 1024 * 800 window simulating fire work, practicing SDL and C++.
+A 1024 * 800 SDL window simulating fire work, by changing pixels colors through time.
 
 ## CMakeList
 

@@ -46,8 +46,10 @@ int main() {
             screen.setPixel(x, y, red_change, green_change, blue_change);
         }
 
+        screen.boxBlur();
+
         screen.update();
-        screen.clear();
+        //screen.clear();
         if(screen.processEvent() == false) {
             break;
         }

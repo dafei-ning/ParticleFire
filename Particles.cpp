@@ -17,6 +17,7 @@ namespace ParticleFire {
     }
 
     void Particles::update(int interval) {
+        // 只是象征性地统一了一下时间
         double xspeed = m_speed * cos(m_direction);
         double yspeed = m_speed * sin(m_direction);
 

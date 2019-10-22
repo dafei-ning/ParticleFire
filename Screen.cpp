@@ -89,7 +89,49 @@ namespace ParticleFire {
     }
 
     void Screen::boxBlur() {
+        // swap the buffers.
+        Uint32 * temp = m_buffer1;
+        m_buffer1 = m_buffer2;
+        m_buffer2 = temp;
+        for (int i = 0; i < SCREEN_HEIGHT; i++) {
+            for (int j = 0; j < SCREEN_WIDTH; j++) {
+                /*
+                 *  0 0 0
+                 *  0 1 0
+                 *  0 0 0
+                 */
+                int redTotal = 0;
+                int greenTotal = 0;
+                int blueTotal = 0;
+                for (int row = -1; row <= 1; row++) {
+                    for (int col = -1; col <= 1; col++) {
+                        int current_i = i + row;
+                        int current_j = j + col;
+                        if (withinEdge(current_i, current_j)) {
+                            Uint32 color = m_buffer2[current_i * SCREEN_WIDTH + current_j];
+                            Uint8 red = color >> 24;
+                            Uint8 green = color >> 16;
+                            Uint8 blue = color >> 8;
+                            redTotal += red;
+                            greenTotal += green;
+                            blueTotal += blue;
+                        }
+                    }
+                }
 
+                Uint8 red = redTotal / 9;
+                Uint8 green = greenTotal / 9;
+                Uint8 blue = blueTotal / 9;
+
+            }
+        }
+
+    }
+    bool Screen::withinEdge(int i, int j) {
+        if (i >= 0 && i < SCREEN_HEIGHT && j >= 0 && j < SCREEN_WIDTH) {
+            return true;
+        }
+        return false;
     }
 
     void Screen::finish() {

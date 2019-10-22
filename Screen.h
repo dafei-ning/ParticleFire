@@ -28,6 +28,8 @@ namespace ParticleFire {
         void clear();
         void finish();
         void boxBlur();
+    private:
+        bool withinEdge(int i, int j);
     };
 }
 

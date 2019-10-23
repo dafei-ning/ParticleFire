@@ -46,7 +46,9 @@ int main() {
         }
 
         screen.boxBlur();
+
         screen.update();
+        
         //screen.clear();
         if(screen.processEvent() == false) {
             break;

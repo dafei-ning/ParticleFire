@@ -9,7 +9,7 @@ namespace ParticleFire {
     struct Particles {
         double m_x;
         double m_y;
-        
+
     private:
         double m_speed;
         double m_direction;

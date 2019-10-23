@@ -11,6 +11,7 @@ namespace ParticleFire {
     public:
         const static int SCREEN_WIDTH = 1024;
         const static int SCREEN_HEIGHT = 800;
+
     private:
         // Conventionally make variable noted as member
         SDL_Window *m_window;
@@ -28,6 +29,7 @@ namespace ParticleFire {
         void clear();
         void finish();
         void boxBlur();
+
     private:
         bool withinEdge(int i, int j);
     };

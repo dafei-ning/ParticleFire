@@ -33,7 +33,7 @@ namespace ParticleFire {
             init();
         }
         if (rand() < RAND_MAX/100) {
-            int();
+            init();
         }
     }
 }

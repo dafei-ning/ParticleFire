@@ -12,11 +12,11 @@ namespace ParticleFire {
 
     }
 
-    void Swarm::update(int time) {
-        int interval = time - lastTime;
+    void Swarm::update(int time_elapsed) {
+        int interval = time_elapsed - lastTime;
         for (int i = 0; i < Swarm::PARTICLES_NUMBER; i++) {
             m_pParticles[i].update(interval);
         }
-        lastTime = time;
+        lastTime = time_elapsed;
     }
 }

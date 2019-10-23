@@ -33,9 +33,9 @@ int main() {
         swarm.update(time_elapsed);
 
         // The color index ranges from 0 to 255, make the color reside in this range.
-        double red_change = (1 + sin(time_elapsed * 0.001)) * 128;
-        double green_change = (1 + sin(time_elapsed * 0.002)) * 128;
-        double blue_change = (1 + sin(time_elapsed * 0.004)) * 128;
+        double red_change = (1 + sin(time_elapsed * 0.00001)) * 130;
+        double green_change = (1 + sin(time_elapsed * 0.00002)) * 130;
+        double blue_change = (1 + sin(time_elapsed * 0.00003)) * 130;
         const Particles * pParticles = swarm.getParticles();
         for (int i = 0; i < Swarm::PARTICLES_NUMBER; i++) {
             // particle也就是产生的随机数而已

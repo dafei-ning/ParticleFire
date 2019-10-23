@@ -29,5 +29,11 @@ namespace ParticleFire {
         double yspeed = m_speed * sin(m_direction);
         m_x += xspeed * interval;
         m_y += yspeed * interval;
+        if (m_x < -1 || m_x > 1 || m_y < -1 || m_y > 1) {
+            init();
+        }
+        if (rand() < RAND_MAX/100) {
+            int();
+        }
     }
 }

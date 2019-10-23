@@ -118,14 +118,12 @@ namespace ParticleFire {
                         }
                     }
                 }
-
                 Uint8 red = redTotal / 9;
                 Uint8 green = greenTotal / 9;
                 Uint8 blue = blueTotal / 9;
-
+                setPixel(j, i, red, green, blue);
             }
         }
-
     }
     bool Screen::withinEdge(int i, int j) {
         if (i >= 0 && i < SCREEN_HEIGHT && j >= 0 && j < SCREEN_WIDTH) {

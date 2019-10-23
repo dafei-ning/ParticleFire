@@ -30,7 +30,6 @@ int main() {
         // counting the seconds it takes to drive the change through sin().
         // The sin(time_elapsed) ranges from -1 to 1.
         int time_elapsed = SDL_GetTicks();
-
         swarm.update(time_elapsed);
 
         // The color index ranges from 0 to 255, make the color reside in this range.
@@ -47,7 +46,6 @@ int main() {
         }
 
         screen.boxBlur();
-
         screen.update();
         //screen.clear();
         if(screen.processEvent() == false) {

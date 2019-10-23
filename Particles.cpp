@@ -6,14 +6,20 @@
 namespace ParticleFire {
     // Through the pixels, particle selected.
     Particles::Particles(): m_x(0), m_y(0) {
-        m_direction = (2 * M_PI * rand()) / RAND_MAX;
-        m_speed = (0.08 * rand()) / RAND_MAX;
-
-        m_speed = m_speed * m_speed;
+        init();
     }
 
     Particles::~Particles() {
 
+    }
+
+    void Particles::init() {
+        m_x = 0;
+        m_y = 0;
+        m_direction = (2 * M_PI * rand()) / RAND_MAX;
+        m_speed = (0.08 * rand()) / RAND_MAX;
+
+        m_speed = m_speed * m_speed;
     }
 
     void Particles::update(int interval) {

@@ -11,7 +11,7 @@ Using `find` instead of using `set`.
 ```
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
-add_executable(SDL_Basic main.cpp)
+add_executable(SDL_Basic main.cpp Screen.cpp Screen.h Particles.cpp Particles.h Swarm.cpp Swarm.h)
 target_link_libraries(SDL_Basic ${SDL2_LIBRARIES})
 ```
 
@@ -34,9 +34,9 @@ color += alpha;
 color <<= 8;
 color += red;   // 0000ff12 Red
 color <<= 8;  
-color += green; // 00ff1234 green
+color += green; // 00ff1234 ++green
 color <<= 8;
-color += blue;  // ff123456 blue
+color += blue;  // ff123456 ++blue
 
 cout << setfill('0') << setw(8) << hex << color << endl;
 
